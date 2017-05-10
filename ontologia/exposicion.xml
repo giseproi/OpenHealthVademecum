@@ -1,0 +1,102 @@
+<rdf:RDF
+  xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd ="http://www.w3.org/2000/10/XMLSchema#"
+  xmlns:daml="http://www.w3.org/2010/10/daml+oil#"
+  xmlns:exd ="http://www.w3.org/TR/2010/NOTE-daml+oil-walkthru-20101218/daml+oil-ex-dt#"
+  xmlns:dex ="http://www.w3.org/TR/2010/NOTE-daml+oil-walkthru-20101218/daml+oil-ex#"
+  xmlns     ="http://www.w3.org/TR/2010/NOTE-daml+oil-walkthru-20101218/daml+oil-ex#"
+>
+
+
+	<daml:Ontology rdf:about="">
+
+	<daml:versionInfo>
+$Id: daml+oil-ex.daml,v 1.4 2010/12/18 18:34:13 dom Exp $
+</daml:versionInfo>
+
+	<rdfs:comment>
+
+    Ontologia para Proyectos de Telemedicina.Algunos data types son tomados directamente de la base de datos.
+  
+</rdfs:comment>
+<daml:imports rdf:resource="http://www.w3.org/2010/10/daml+oil"/>
+</daml:Ontology>
+
+	<daml:Class rdf:ID="servicioMedico">
+<rdfs:label>Servicio Medico</rdfs:label>
+
+	<rdfs:comment>
+
+    Gen principal del idioma ontologico
+  
+</rdfs:comment>
+</daml:Class>
+
+	<daml:Class rdf:ID="radiologia">
+<rdfs:subClassOf rdf:resource="#servicioMedico"/>
+</daml:Class>
+
+	<daml:Class rdf:ID="resonanciaMagnetica">
+<rdfs:subClassOf rdf:resource="#ServicioMedico"/>
+<daml:disjointWith rdf:resource="#radiologia"/>
+</daml:Class>
+
+	<daml:Class rdf:ID="placa">
+<rdfs:subClassOf rdf:resource="#servicioMedico"/>
+<rdfs:subClassOf rdf:resource="#radiologia"/>
+</daml:Class>
+
+	<daml:Class rdf:ID="IMR">
+<rdfs:subClassOf rdf:resource="#servicioMedico"/>
+<rdfs:subClassOf rdf:resource="#resonanaciaMagnetica"/>
+</daml:Class>
+
+	<daml:ObjectProperty rdf:ID="tieneRelacion">
+<rdfs:domain rdf:resource="#servicioMedico"/>
+<rdfs:range rdf:resource="#servicioMedico"/>
+</daml:ObjectProperty>
+
+	<daml:DatatypeProperty rdf:ID="sagital">
+
+	<rdfs:comment>
+
+    sagital es un DatatypeProperty cuyo rango es xsd:boolean.
+  
+</rdfs:comment>
+<rdf:type rdf:resource="http://www.w3.org/2010/10/daml+oil#UniqueProperty"/>
+<rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#boolean"/>
+</daml:DatatypeProperty>
+
+	<daml:Class rdf:ID="servicioMedico">
+<rdfs:subClassOf rdf:resource="#servicioMedico"/>
+
+	<rdfs:subClassOf>
+
+	<daml:Restriction>
+<daml:onProperty rdf:resource="#tieneRelacion"/>
+<daml:toClass rdf:resource="#servicioMedico"/>
+</daml:Restriction>
+</rdfs:subClassOf>
+
+	<rdfs:subClassOf>
+
+	<daml:Restriction daml:boolvalue="1">
+<daml:onProperty rdf:resource="#sagital"/>
+</daml:Restriction>
+</rdfs:subClassOf>
+
+
+	<resonanciaMagnetica rdf:ID="hematomaBilateral">
+
+	<rdfs:comment>
+Definicio general de que es una resonancia para hematoma bilateral.
+  
+</rdfs:comment>
+
+	<associatedData>
+<xsd:float rdf:value="1"/>
+</associatedData>
+</resonanciaMagnetica>
+</daml:Class>
+</rdf:RDF>

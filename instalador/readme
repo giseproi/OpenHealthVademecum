@@ -1,0 +1,27 @@
+/**
+ * Open Health Vademecum
+ * Copyright (C)
+ * UNIVERSIDAD DISTRITAL Francisco José de Caldas
+ * Grupo de Investigación GITEM
+ * 
+ * Este programa es software libre: puede redistribuirlo y/o modificarlo bajo
+ * los términos de la Licencia General Pública de GNU publicada por la Free
+ * Software Foundation, ya sea la versión 3 de la Licencia, o (a su elección)
+ * cualquier versión posterior.
+ * 
+ * Este programa se distribuye con la esperanza de que sea útil pero SIN 
+ * NINGUNA GARANTÍA. Incluso sin garantía implícita de COMERCIALIZACIÓN o 
+ * ADECUACIÓN PARA UN PROPÓSITO PARTICULAR.  
+ * 
+ * Usted ha debido de recibir una copia de la Licencia GPL junto con este 
+ * programa. Si no es así, por favor consulte: <http://www.gnu.org/licenses/>. 
+ */
+ 
+IMPORTANTE
+
+La carpeta instalador es una carpeta 'temporal'. 
+
+Debe estar en el portal solo mientras es configurado y puesto a punto.Una vez 
+ocurrido esto se recomienda que se elimine la carpeta del portal para evitar
+accesos ilegales al aplicativo.
+

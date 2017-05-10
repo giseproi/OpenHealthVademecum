@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+.mensaje{
+	padding:5px;
+}
+
+.textoMensaje{
+	font-size: 12px;
+	font-family: "Arial", Verdana, Trebuchet MS, Helvetica, sans-serif;
+	text-align: justify;
+	color: #2A2A2A;
+}
+
+.imagenMensaje{
+	
+		
+}
+
+.principal{
+	
+	width:50%;
+	
+}
+
+body{
+	
+	
+	background: url(salud.jpg) no-repeat; 
+	
+}
+
+.encabezado,.botonContainer{
+	margin:0 auto;
+	padding:20px;
+	width:50%;
+	
+}
+
+.piePagina{
+	
+	background-color:rgba(57,141,191,0.80);
+	color:#FFF;
+	padding: 20px;
+	
+}
+
+p.pie{
+	
+	line-height: 0.4em;
+}
+
+.encabezadoSeccion{
+	
+	background-color:rgba(57,141,191,0.80);
+	color:#FFFFFF;
+	padding:0.4em;
+	margin:0.5em 0;
+	
+}

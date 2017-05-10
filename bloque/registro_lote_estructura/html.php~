@@ -1,0 +1,123 @@
+<?
+/*
+############################################################################
+#    UNIVERSIDAD DISTRITAL Francisco Jose de Caldas                        #
+#    Desarrollo Por:                                                       #
+#    Paulo Cesar Coronado 2012 - 2017                                      #
+#    paulo_cesar@etb.net.co                                                #
+#    Copyright: Vea el archivo EULA.txt que viene con la distribucion      #
+############################################################################
+*/
+/***************************************************************************
+  
+index.php 
+
+Paulo Cesar Coronado
+Copyright (C) 2010-2016
+
+Última revisión 24 de octubre de 2017
+
+*****************************************************************************
+* @subpackage   
+* @package	bloques
+* @copyright    
+* @version      0.2
+* @author      	Paulo Cesar Coronado
+* @link		N/D
+* @description  Formulario para el registro de un archivo de bloques
+* @usage        
+*******************************************************************************/ 
+if(!isset($GLOBALS["autorizado"]))
+{
+	include("../index.php");
+	exit;		
+}
+
+$formulario="registro_lote_estructura";
+$verificar="control_vacio(".$formulario.",'archivo')";
+
+include ($configuracion["raiz_documento"].$configuracion["estilo"]."/".$this->estilo."/tema.php");
+
+registrar_lote_info_anual($configuracion,$tema,$fila,$tab,$formulario,$verificar);
+
+/*==========================================================*/
+/*                    Funciones                             */
+/*==========================================================*/
+
+function registrar_lote_info_anual($configuracion,$tema,$fila,$tab,$formulario,$verificar)
+{
+	include_once($configuracion["raiz_documento"].$configuracion["clases"]."/encriptar.class.php");	
+	$indice=$configuracion["host"].$configuracion["site"]."/index.php?";
+	$cripto=new encriptar();
+		
+?><table class="tabla_organizacion">
+<tr>
+<td>
+<form enctype='multipart/form-data' method="POST" action="index.php" name="<? echo $formulario?>" onsubmit="">
+<table class="bloquelateral" align="center" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+		<tr>
+			<td align="center" valign="middle">
+				<table style="width: 100%; text-align: left;" border="0" cellpadding="6" cellspacing="0">
+					<tr class="bloquecentralcuerpo">
+						<td colspan="2" rowspan="1">
+							<span class="encabezado_normal">Carga de registros por lotes. (Grupos de registros)</span>
+							<hr class="hr_division">
+						</td>		
+					</tr>	
+					<tr class="bloquecentralcuerpo">
+						<td>
+							<table style="width: 100%; text-align: left;" border="0" cellpadding="2" cellspacing="1">
+								<tr class="bloquecentralcuerpo">
+									<td>
+										Archivo
+									</td>
+									<td>
+										<input type="file" name="archivo" tabindex="<? echo $tab++ ?>">
+									</td>
+								</tr>
+								<tr class="bloquecentralcuerpo">
+									<td colspan="2">
+										<hr class="hr_division">
+									</td>									
+								</tr>							
+								<tr align="center">
+									<td colspan="2">
+										<table width="80%" align="center" border="0">
+											<tr>
+												<td align="center"><?
+													$datos.="&action=registro_lote_estructura";						
+													$datos.="&id_entidad=".$_REQUEST["id_entidad"];						
+													$datos=$cripto->codificar($datos,$configuracion);	
+													?>	<input type='hidden' name='formulario' value="<? echo $datos ?>">
+													<img  src="<? echo $configuracion["host"].$configuracion["site"].$configuracion["grafico"]?>/boton_aceptar.png" alt="Aceptar" title="Aceptar" border="0" onclick="return(<? echo $verificar; ?>)?document.forms['<? echo $formulario?>'].submit():false"/>
+												</td>
+												<td align="center">
+												<img  src="<? echo $configuracion["host"].$configuracion["site"].$configuracion["grafico"]?>/boton_cancelar.png" alt="Cancelar la operaci&oacute;n" title="Cancelar la operaci&oacute;n" border="0" tabindex='<? echo $tab++ ?>' onclick="location.replace('<? 
+												$variable="pagina=administrar_medicamento";
+												$variable.="&accion=1";
+												$variable.="&hoja=1";
+												$variable.="&mostrar=lista";
+												$variable=$cripto->codificar_url($variable,$configuracion);
+												echo $indice.$variable;		
+												?>')">
+												</td>
+											</tr>
+										</table>	
+									</td>
+								</tr>	
+							</table>
+						</td>	
+					</tr>									
+				</table>
+			</td>
+		</tr>							
+	</tbody>
+</table>
+</form>
+</td>
+</tr>
+</table><?	
+}
+
+?>
